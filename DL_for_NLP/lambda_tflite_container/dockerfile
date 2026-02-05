@@ -1,0 +1,7 @@
+FROM public.ecr.aws/lambda/python:3.10
+RUN pip install --no-cache-dir numpy tflite-runtime
+COPY lambda_function.py .
+COPY simple_rnn_imdb.tflite .
+COPY word_index.json .
+
+CMD ["lambda_function.lambda_handler"]
